@@ -8,11 +8,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>CWH Text Utils</title>
+    <title>Text Utils-Results </title>
+    <style>
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   display: block;
+}
+</style>
   </head>
   <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">CWHTextUtils.com</a>
+  <a class="navbar-brand" href="#">TextUtils.com</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -49,11 +61,15 @@
 
 <h1>Your Analyzed Text - {{ purpose }}</h1>
 <p>
-  <pre>{{ analyzed_text }}</pre>
+  <pre><h2>{{ analyzed_text }}</h2></pre>
 
 </p>
 </div>
-
+<footer class="footer">
+  <div class="container">
+    <span class="text-light">&#169 2019 Textutils.in </span>
+  </div>
+</footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

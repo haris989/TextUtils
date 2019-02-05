@@ -7,8 +7,22 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!--Typed.js-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typed.js"></script>
 
     <title>Text Utils</title>
+    <style>
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   display: block;
+}
+</style>
   </head>
   <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -52,7 +66,7 @@
 
 
   <div class="form-group">
-    <label for="exampleFormControlTextarea1">Enter your text here and let Text Utils do the magic</label>
+    <h3><span id="typed"></span></h3>
     <textarea class="form-control" name='text' id="exampleFormControlTextarea1" rows="9"></textarea>
   </div>
 
@@ -79,7 +93,28 @@
 <button type="submit" class="btn btn-dark mt-2">Analyze Text</button>
     </form>
 </div>
+ <!-- Typed.js DONT TOUCH THIS! --> 
+ <div id="typed-strings">
+  </div>
+  
+  <script>
+     var typed = new Typed('#typed',{
+                    strings:["You can do anything with your text here!","Enter your text here and let Text Utils do the magic!"],
+                    backSpeed: 15,
+                    smartBackspace: true,
+                    backDelay: 1200,
+                    startDelay: 1000,
+                    typeSpeed: 25,
+                    loop: false,
 
+                  });
+    </script>
+  <!-- Footer-->
+<footer class="footer">
+  <div class="container">
+    <span class="text-light">&#169 2019 Textutils.in </span>
+  </div>
+</footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
