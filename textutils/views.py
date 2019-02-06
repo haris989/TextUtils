@@ -16,6 +16,7 @@ def analyze(request):
     fullcaps = request.POST.get('fullcaps', 'off')
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
+    numberremover = request.POST.get('numberremover','off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -39,7 +40,12 @@ def analyze(request):
     if(extraspaceremover=="on"):
         analyzed = ""
         for index, char in enumerate(djtext):
-            if not(djtext[index] == " " and djtext[index+1]==" "):
+            # It is for if a extraspace is in the last of the string
+            if char == djtext[-1]:
+                    if not(djtext[index] == " "):
+                        analyzed = analyzed + char
+
+            elif not(djtext[index] == " " and djtext[index+1]==" "):                        
                 analyzed = analyzed + char
 
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
@@ -52,7 +58,7 @@ def analyze(request):
                 analyzed = analyzed + char
 
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
-
+    
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on"):
         return HttpResponse("please select any operation and try again")
 
