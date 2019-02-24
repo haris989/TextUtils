@@ -1,0 +1,48 @@
+[33mcommit b800ae905bd825cd3002ef1754962b5fad845001[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: NikhilRajPandey <nikhilrajpandey1@gmail.com>
+Date:   Wed Feb 6 20:06:38 2019 +0530
+
+    I have fix the issue when we write a message and a extraspace in the last
+    in textarea and after then we use extraspace remover than it give a error
+    then i have fix this error.
+
+[33mcommit 5e6e2d3c621c552515ec790f1037453da936fa80[m
+Author: NikhilRajPandey <nikhilrajpandey1@gmail.com>
+Date:   Wed Feb 6 19:28:13 2019 +0530
+
+    Making a copy button
+
+[33mcommit cc5d39de3b599d75aa465bc0d59470416dd9f8ea[m
+Author: NikhilRajPandey <nikhilrajpandey1@gmail.com>
+Date:   Wed Feb 6 18:58:46 2019 +0530
+
+    Making Validation on textarea
+
+[33mcommit 3701414d41415326186656fe72d0e9a895b46022[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Haris Ali Khan <haris989@users.noreply.github.com>
+Date:   Tue Feb 5 23:06:35 2019 +0530
+
+    Changed TextUtils Url in Navbar
+    
+    Changed TextUtils Url from textutils.com to textutils.in in Navbar
+
+[33mcommit f9aeb2107d2da7c7647c3a2c08be4d5fbdb924c9[m
+Merge: 603fa3a 199f86e
+Author: Haris Ali Khan <haris989@users.noreply.github.com>
+Date:   Tue Feb 5 22:59:21 2019 +0530
+
+    Merge pull request #1 from RohanDas28/master
+    
+    Added Footer and Typed.js
+
+[33mcommit 199f86ecaf3dbd75d7e2ac29a674905a2a55d519[m
+Author: Rohan Das <rohandasbirbhum@gmail.com>
+Date:   Tue Feb 5 19:28:04 2019 +0530
+
+    Added Footer and Typed.js
+
+[33mcommit 603fa3a32a7af3fda321879f2d550c9403337318[m
+Author: Haris Ali Khan <harisalikhan13@gmail.com>
+Date:   Tue Feb 5 09:10:41 2019 +0530
+
+    First commit
