@@ -11,18 +11,20 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typed.js"></script>
 
     <title>Text Utils</title>
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="https://codewithharry.com/static/photo.png">
     <style>
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: black;
-   color: white;
-   text-align: center;
-   display: block;
-}
-</style>
+		.footer {
+   		position: fixed;
+   		left: 0;
+   		bottom: 0;
+   		width: 100%;
+   		background-color: black;
+   		color: white;
+   		text-align: center;
+   		display: block;
+		}
+	</style>
   </head>
   <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -36,7 +38,7 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
+        <a class="nav-link" href="/about">About Us</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Contact Us</a>
@@ -67,8 +69,22 @@
 
   <div class="form-group">
     <h3><span id="typed"></span></h3>
-    <textarea class="form-control" name='text' id="exampleFormControlTextarea1" rows="8"></textarea>
-    <span id="messageofvalidate" class="text-danger"></span>
+
+    <textarea class="form-control" name='text' id="exampleFormControlTextarea1" rows="9"></textarea>
+    
+	<!-- Word Counter -->
+	<p>
+	<span id="wordCount">0</span> Characters
+	<script type="text/javascript">
+		var exampleFormControlTextarea1 = document.getElementById("exampleFormControlTextarea1");
+		var wordCount = document.getElementById("wordCount");
+
+		exampleFormControlTextarea1.addEventListener("keyup",function(){
+		var characters = exampleFormControlTextarea1.value.split('');
+  		wordCount.innerText = characters.length;
+		});
+	</script>
+	</p>
   </div>
 
 <div class="custom-control custom-switch">
