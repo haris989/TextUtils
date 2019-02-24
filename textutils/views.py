@@ -57,3 +57,6 @@ def analyze(request):
         return HttpResponse("please select any operation and try again")
 
     return render(request, 'analyze.html', params)
+
+def about(request):
+    return render(request, 'about.html')
