@@ -17,6 +17,8 @@ def analyze(request):
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
     numberremover = request.POST.get('numberremover','off')
+    camelcase = request.POST.get('camelcase','off')
+    swapcase = request.POST.get('swapcase','off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -70,8 +72,28 @@ def analyze(request):
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
 
-    
-    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
+    if (camelcase == "on"):
+        if len(djtext)==0:
+            return
+        analyzed=""
+        analyzed+=djtext[0].upper()
+        for i in range(1,len(djtext)):
+            if djtext[i]==' ':
+                analyzed+=djtext[i+1].upper()
+                i+=1
+            elif djtext[i-1]!=' ':
+                analyzed+=djtext[i]
+
+        params = {'purpose': 'Camel Case', 'analyzed_text': analyzed}
+        djtext = analyzed
+
+    if (swapcase == "on"):
+        analyzed = ""
+        analyzed = djtext.swapcase()
+        params = {'purpose': 'Swap Case', 'analyzed_text': analyzed}
+        djtext = analyzed
+
+    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on" and camelcase!="on" and swapcase!="on"):
         return HttpResponse("please select any operation and try again")
 
     return render(request, 'analyze.html', params)
