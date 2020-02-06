@@ -17,7 +17,6 @@ def analyze(request):
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
     numberremover = request.POST.get('numberremover','off')
-    charcount = request.POST.get('charcount', 'off')
 
     #Check which checkbox is on
     if removepunc == "on":
