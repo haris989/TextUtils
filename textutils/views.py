@@ -17,6 +17,7 @@ def analyze(request):
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
     numberremover = request.POST.get('numberremover','off')
+    charcount = request.POST.get('charcount', 'off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -58,6 +59,7 @@ def analyze(request):
                 analyzed = analyzed + char
 
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        djtext = analyzed
     
     if (numberremover == "on"):
         analyzed = ""
@@ -70,7 +72,6 @@ def analyze(request):
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
 
-    
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
         return HttpResponse("please select any operation and try again")
 
