@@ -38,12 +38,8 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">About Us</a>
+        <a class="nav-link" href="/about/">About Us</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
-      </li>
-
     </ul>
   </div>
   <form class="form-inline">
@@ -63,7 +59,7 @@
 
 <div class="container">
 
-  <form action='/analyze' onsubmit="return validate()" method='post'> {% csrf_token %}
+  <form action='/analyze/' onsubmit="return validate()" method='post'> {% csrf_token %}
 
 
 
@@ -92,12 +88,12 @@
   <label class="custom-control-label" for="customSwitch1">Remove Punctuations</label>
 </div>
 
-  <div class="custom-control custom-switch">
+<div class="custom-control custom-switch">
   <input type="checkbox" name="fullcaps" class="custom-control-input" id="customSwitch2">
   <label class="custom-control-label" for="customSwitch2">UPPERCASE</label>
 </div>
 
-  <div class="custom-control custom-switch">
+<div class="custom-control custom-switch">
   <input type="checkbox"  name="newlineremover" class="custom-control-input" id="customSwitch3">
   <label class="custom-control-label" for="customSwitch3">New Line Remover</label>
 </div>
@@ -110,7 +106,7 @@
 <div class="custom-control custom-switch">
     <input type="checkbox"  name="numberremover" class="custom-control-input" id="customSwitch5">
     <label class="custom-control-label" for="customSwitch5">Number Remover</label>
-  </div>
+</div>
 
 <button type="submit" class="btn btn-dark mt-2">Analyze Text</button>
     </form>
@@ -134,7 +130,7 @@
   <!-- Footer-->
 <footer class="footer">
   <div class="container">
-    <span class="text-light">&#169 2019 Textutils.in </span>
+    <span class="text-light">&#169 2020 Textutils.in </span>
   </div>
 </footer>
 
