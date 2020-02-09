@@ -12,7 +12,7 @@
 
     <title>Text Utils</title>
     <!-- Favicon-->
-    <link rel="shortcut icon" href="https://codewithharry.com/static/photo.png">
+    <link rel="shortcut icon" href="https://cdn.iconscout.com/icon/premium/png-512-thumb/setting-321-477689.png">
     <style>
 		.footer {
    		position: fixed;
@@ -28,7 +28,7 @@
   </head>
   <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">TextUtils.in</a>
+  <a class="navbar-brand" href="{% url 'index' %}">TextUtils.in</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,10 +38,10 @@
         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about">About Us</a>
+        <a class="nav-link" href="{% url 'about' %}">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
+        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
       </li>
 
     </ul>
