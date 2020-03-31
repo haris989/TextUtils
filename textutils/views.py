@@ -72,7 +72,7 @@ def analyze(request):
 
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
-        return HttpResponse("please select any operation and try again")
+        return render(request, 'error.html')
 
     return render(request, 'analyze.html', params)
 
