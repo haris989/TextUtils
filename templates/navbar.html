@@ -1,0 +1,28 @@
+{% url 'index' as home_url%}
+{% url 'about' as about_url%}
+{% url 'contact' as contact_url%}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index'%}">TextUtils.in</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item {% if request.path == home_url%} active {% endif %} ">
+        <a class="nav-link" href="{{home_url}}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item {% if request.path == about_url%} active {% endif %} ">
+        <a class="nav-link" href="{{about_url}}">About Us</a>
+      </li>
+      <li class="nav-item {% if request.path == contact_url%} active {% endif %} " >
+        <a class="nav-link" href="{{contact_url}}">Contact Us</a>
+      </li>
+
+    </ul>
+  </div>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
