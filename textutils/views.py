@@ -1,6 +1,6 @@
 # I have created this file - Harry
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, Http404
 
 
 def index(request):
@@ -72,9 +72,12 @@ def analyze(request):
 
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
-        return HttpResponse("please select any operation and try again")
+        raise Http404("Please Select Any Operations")
 
     return render(request, 'analyze.html', params)
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'about.html', {})
+
+def contact(request):
+    return render(request, 'contact.html', {})
