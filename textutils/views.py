@@ -48,7 +48,7 @@ def analyze(request):
             elif not(djtext[index] == " " and djtext[index+1]==" "):                        
                 analyzed = analyzed + char
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        params = {'purpose': 'Removed Extra Spaces', 'analyzed_text': analyzed}
         djtext = analyzed
 
     if (newlineremover == "on"):
@@ -67,7 +67,7 @@ def analyze(request):
             if char not in numbers:
                 analyzed = analyzed + char
         
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        params = {'purpose': 'Removed Numbers', 'analyzed_text': analyzed}
         djtext = analyzed
 
     
