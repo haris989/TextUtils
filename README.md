@@ -1,6 +1,9 @@
+#What is Django
+Django is a Python-based free and open-source web framework that follows the model-template-views architectural pattern. 
+It is maintained by the Django Software Foundation, an American independent organization established as a 501 non-profit.
+
 # TextUtils
 A tool for analyzing text data in Django backend
-
 It is a simple django project or website in which we can Analyze text.
 
 <h1>What Can We do from textutils ?</h1>
