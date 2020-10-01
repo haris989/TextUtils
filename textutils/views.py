@@ -1,7 +1,8 @@
 # I have created this file - Harry
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from googletrans import Translator
+translator = Translator()
 
 def index(request):
     return render(request, 'index.html')
@@ -17,6 +18,7 @@ def analyze(request):
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
     numberremover = request.POST.get('numberremover','off')
+    transtext = request.POST.get('transtext', 'off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -69,7 +71,12 @@ def analyze(request):
         
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
-
+        
+    if transtext == "on":
+        translations = translator.translate(djtext, dest='hi')
+        analyzed = translations.text
+        params = {'purpose': 'Your Translated Text', 'analyzed_text': analyzed}
+       
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
         return HttpResponse("please select any operation and try again")
