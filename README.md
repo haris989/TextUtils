@@ -9,7 +9,7 @@ Example: Hell@#o World = Hello World<br>
 2)UPPERCASE<br>
 Example: hello world = HELLO WORLD<br>
 3)New Line Remove<br>
-Example: Hello \n World = Hello World<br>
+Example: Hello\n World = Hello World<br>
 4)Extra Spaces Remover<br>
 Example: Hello World = Hello World<br>
 5)Numbers Remover<br>
