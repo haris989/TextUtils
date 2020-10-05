@@ -17,6 +17,7 @@ def analyze(request):
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
     numberremover = request.POST.get('numberremover','off')
+    wordcounter=request.POST.get('wordcount','off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -58,6 +59,7 @@ def analyze(request):
                 analyzed = analyzed + char
 
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        djtext=analyzed
     
     if (numberremover == "on"):
         analyzed = ""
@@ -69,9 +71,29 @@ def analyze(request):
         
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
+    if wordcounter == "on":
+        mytext = djtext
+        analyzed=djtext
+        char = len(mytext)
+        word = 1
+        if char ==0 :
+            word = 0
+        checker=char-1
+        print(mytext)
+        for i in range(0,char):
+            if (mytext[i] == " " or mytext[i] == "\r" or mytext[i] == "\n"):
+               if (i<checker):
+                   if mytext[i+1] !=" " and mytext[i+1]!='\r' and mytext[i+1] != "\n":
+                       word+=1
 
-    
-    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
+        # for i in word :
+        #     if i == "" or i == " "  :
+        #         word.remove(i)
+        #words = len(word)
+
+        my_analyzed = f"{analyzed}  has {word} Words"
+        params ={'analyzed_text': my_analyzed}
+    if(removepunc != "on" and wordcounter!= "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
         return HttpResponse("please select any operation and try again")
 
     return render(request, 'analyze.html', params)
