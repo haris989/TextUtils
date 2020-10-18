@@ -78,3 +78,6 @@ def analyze(request):
 
 def about(request):
     return render(request, 'about.html')
+def contactus(request):
+    return render(request, 'contactus.html')
+
