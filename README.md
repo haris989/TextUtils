@@ -2,6 +2,7 @@
 A tool for analyzing text data in Django backend
 
 It is a simple django project or website in which we can Analyze text.
+In this project we have used built in python modules to Analyze text and we have used HTML, CSS, bootstrap and javascript in the frontend of this website.
 
 <h1>What Can We do from Textutils ?</h1>
 1)Remove Punctuations<br>
