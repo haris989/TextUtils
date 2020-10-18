@@ -11,7 +11,42 @@
     <title>Text Utils-Results </title>
     <!-- Favicon-->
     <link rel="shortcut icon" href="https://codewithharry.com/static/photo.png">
-    <style>
+    <link rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+			integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="crossorigin="anonymous"
+			/>
+
+		<style>
+		.bg-music{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.btnc{
+
+background-color: transparent;
+color: #fff;
+font-size: 78px;
+border: none;
+transform: rotate(270deg);
+/* display: block; */
+margin: 0 auto;
+opacity: .3;
+transition: all linear .2s;
+}
+#sound{
+ color:yellow;
+	transform: rotate(270deg);
+}
+.btnc:hover{
+    opacity: 1;
+}
+.fa-pause-circle-o{
+    display: none;
+}
+		
 .footer {
    position: fixed;
    left: 0;
@@ -50,7 +85,18 @@
   </form>
 </nav>
 <div class="container">
-<h1> THIS PAGE IS STILL IN DEVELOPEMENT STAGE </h1></div>
+<audio id="myMusic" src="music.mp3" loop=""></audio>
+
+						<button class="btnc" style="margin:-12px; background-color:black">
+							<i class="fa fa-play-circle-o"></i>
+							<i class="fa fa-pause-circle-o"></i>
+
+						</button>
+            <p id="sound" class="text-center" style="color:white;
+							font-size:130%;
+							font-weight:
+							bold;">Sound</p>
+</div>
 
 
 <footer class="footer">
@@ -58,6 +104,27 @@
     <span class="text-light">&#169 2019 Textutils.in </span>
   </div>
 </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+							integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="crossorigin="anonymous"></script>
+						<script>
+    
+    $(document).ready(function(){
+        $(".btn .fa-play-circle-o").on('click',function(){
+            $(this).hide();
+            $(".fa-pause-circle-o").fadeIn();
+            $("#myMusic")[0].play();
+        });
+
+        $(".btn .fa-pause-circle-o").on('click', function () {
+            $(this).hide();
+            $(".fa-play-circle-o").fadeIn();
+            $("#myMusic")[0].pause();
+        });
+    });
+    
+    </script>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
