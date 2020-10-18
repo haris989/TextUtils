@@ -69,7 +69,7 @@ def analyze(request):
         
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
-
+jhjjh
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
         return HttpResponse("please select any operation and try again")
