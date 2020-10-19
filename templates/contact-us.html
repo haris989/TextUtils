@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!--  title  -->
+{% block title %}Contact Us {% endblock title %}
+<!--  body  -->
+{% block body %}
+<div class="container mt-3">
+    <form method="POST" action="/">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Your Email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="desc" rows="3"></textarea>
+        </div>
+        <button type='submit' class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock body %}
