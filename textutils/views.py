@@ -36,6 +36,15 @@ def analyze(request):
 
         params = {'purpose': 'Changed to Uppercase', 'analyzed_text': analyzed}
         djtext = analyzed
+        
+    if lowercase == 'on':
+        analyzed = ''
+        for char in djtext:
+            analyzed = analyzed + char.lower()
+
+        params = {'purpose':'Lower Case', 'analyzed_text':analyzed}
+        djtext = analyzed
+    
 
     if(extraspaceremover=="on"):
         analyzed = ""
@@ -69,9 +78,19 @@ def analyze(request):
         
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
+        
+    if charcount == 'on':
+        analyzed = ''
+        count = 0
+        for char in djtext:
+            count = count + 1
+        
+        analyzed = f'Number of character in the text "{djtext}" is : {count}'
+        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        djtext = analyzed    
 
     
-    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
+    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on" and lowercase != "on" and charcount != "on"):
         return HttpResponse("please select any operation and try again")
 
     return render(request, 'analyze.html', params)
