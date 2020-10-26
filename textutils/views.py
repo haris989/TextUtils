@@ -2,11 +2,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-
+#Home Page
 def index(request):
     return render(request, 'index.html')
 
+#Services Page
+def services(request):
+    return render(request, 'index.html')
 
+# Text Analyze Funtion
 def analyze(request):
     #Get the text
     djtext = request.POST.get('text', 'default')
