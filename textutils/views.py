@@ -48,7 +48,7 @@ def analyze(request):
             elif not(djtext[index] == " " and djtext[index+1]==" "):                        
                 analyzed = analyzed + char
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        params = {'purpose': 'Removed ExtraSpaces', 'analyzed_text': analyzed}
         djtext = analyzed
 
     if (newlineremover == "on"):
@@ -58,6 +58,7 @@ def analyze(request):
                 analyzed = analyzed + char
 
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        djtext = analyzed
     
     if (numberremover == "on"):
         analyzed = ""
@@ -67,14 +68,20 @@ def analyze(request):
             if char not in numbers:
                 analyzed = analyzed + char
         
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        params = {'purpose': 'Removed Numbers', 'analyzed_text': analyzed}
         djtext = analyzed
 
-    
-    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
-        return HttpResponse("please select any operation and try again")
+    if(djtext==""):
+    	msg={"error_msg":"Please Enter Any Text"}
+    	return render(request,'Error.html',msg)
 
+    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
+        msg={"error_msg":"Please Select At Least One Operator And Try Again :-("}
+        return render(request,'Error.html',msg)
+
+           
     return render(request, 'analyze.html', params)
 
 def about(request):
     return render(request, 'about.html')
+
