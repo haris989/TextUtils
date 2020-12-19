@@ -65,19 +65,21 @@
 </div>
 
 
-<div class="container">
-
-<h1>Your Analyzed Text - {{ purpose }}</h1>
-
-<div style="position:relative;" class="bg-light">
-<p>
-    <button id="corner-btn" class="btn btn-outline-primary" onclick="copy()">
-        Copy
-    </button>
-  <pre id="copy-text" class="p-4"><h2>{{ analyzed_text }}</h2></pre>
-</p>
-</div>
-</div>
+<div class="container mt-4">
+  <div class="card">
+            <h5 class="card-header">Analzed Text</h5>
+            <div class="card-body">
+                <h5 class="card-title">{{ purpose }}</h5>
+                <div style="position:relative;" class="bg-light">
+                <p>
+                  <button id="corner-btn" class="btn btn-outline-primary" onclick="copy()">
+                      Copy
+                  </button>
+                  <pre id="copy-text" class="p-4"><h2>{{ analyzed_text }}</h2></pre>
+                 </p>
+                 <a href="/" class="btn btn-dark mt-2">Go Back</a>
+              </div>
+        </div>
 <footer class="footer">
   <div class="container">
     <span class="text-light">&#169 2019 Textutils.in </span>
