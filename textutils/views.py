@@ -1,7 +1,7 @@
 # I have created this file - Harry
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from englisttohindi.englisttohindi import EngtoHindi
 
 def index(request):
     return render(request, 'index.html')
@@ -17,6 +17,7 @@ def analyze(request):
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
     numberremover = request.POST.get('numberremover','off')
+    translate = request.POST.get('translate','off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -69,9 +70,14 @@ def analyze(request):
         
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
+    
+    if (translate == "on"):
+        analyzed = EngtoHindi(djtext)
+        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed.convert}
+        djtext = analyzed.convert
 
     
-    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
+    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on" and translate != "on"):
         return HttpResponse("please select any operation and try again")
 
     return render(request, 'analyze.html', params)
