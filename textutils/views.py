@@ -1,4 +1,4 @@
-# I have created this file - Harry
+# I have created this file - Harry (IITian)
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -25,7 +25,7 @@ def analyze(request):
         for char in djtext:
             if char not in punctuations:
                 analyzed = analyzed + char
-
+        purp = "Removed Punctuations"
         params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
         djtext = analyzed
 
@@ -33,7 +33,7 @@ def analyze(request):
         analyzed = ""
         for char in djtext:
             analyzed = analyzed + char.upper()
-
+        purp += " | Changed To Uppercase"
         params = {'purpose': 'Changed to Uppercase', 'analyzed_text': analyzed}
         djtext = analyzed
 
@@ -47,7 +47,7 @@ def analyze(request):
 
             elif not(djtext[index] == " " and djtext[index+1]==" "):                        
                 analyzed = analyzed + char
-
+        purp += " | Extra Space Removed"
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
 
@@ -56,7 +56,7 @@ def analyze(request):
         for char in djtext:
             if char != "\n" and char!="\r":
                 analyzed = analyzed + char
-
+        purp += " | New Line Removed"
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
     
     if (numberremover == "on"):
@@ -66,7 +66,7 @@ def analyze(request):
         for char in djtext:
             if char not in numbers:
                 analyzed = analyzed + char
-        
+        purp += " | Number Removed"
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
 
@@ -74,7 +74,8 @@ def analyze(request):
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
         return HttpResponse("please select any operation and try again")
 
-    return render(request, 'analyze.html', params)
+    Parameters = {'purpose':purp,'analyzed_text':analyzed }
+    return render(request, 'analyze.html', Parameters)
 
 def about(request):
     return render(request, 'about.html')
