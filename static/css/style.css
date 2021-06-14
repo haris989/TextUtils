@@ -23,6 +23,16 @@
       white-space: pre-wrap;
   }
 
+  .aboutus{
+    font-size: 1.1rem;
+  }
+
   .analyzed_text:hover, .analyzed_css:hover{
     color: red;
+}
+
+img.aboutimg{
+  width: 50vw;
+  margin:auto auto;
+  display: block;
 }

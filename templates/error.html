@@ -14,7 +14,7 @@
     <!-- Custom CSS form static -->
     <link rel="stylesheet" href="/static/css/style.css">
 
-    <title>Text Utils- {{place}} </title>
+    <title>Text Utils- {{place}}</title>
     <!-- Favicon-->
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
 
@@ -32,10 +32,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</span></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/about">About Us</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact Us</a>
                 </li>
 
@@ -47,31 +47,9 @@
         </form>
     </nav>
 
-
     <div class="container mt-4">
-        <h2 class="text-center">Fill the form to get in touch with us.</h2>
-        <form class="mt-5" action='/thanks' method='post'> {% csrf_token %}
-            <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Name" name="name1" aria-label="name1" required>
-            </div>
-
-            <div class="mb-3">
-                <input type="email" placeholder="Enter your email here" class="form-control" id="exampleInputEmail1" required>
-            </div>
-
-            <div class="mb-3">
-                <textarea class="form-control" id="exampleFormControlTextarea1" name = "text2" rows="9"
-                    placeholder="Enter your message here" required></textarea>
-            </div>
-
-            <div class="custom-control custom-switch mb-3">
-                <input type="checkbox" name="agreeterms" class="custom-control-input" id="customSwitch2" checked>
-                <label class="custom-control-label" for="customSwitch2">Agree to our terms</label>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-        </form>
+        <h2 class="text-center">You did not provide any instruction!!</h2>
+        <img class="aboutimg" src="{% static '/img/error.jpg' %}" alt="About TextUtils">
     </div>
 
 

@@ -14,7 +14,7 @@
   <!-- Custom CSS form static -->
   <link rel="stylesheet" href="/static/css/style.css">
 
-  <title>Text Utils-Results </title>
+  <title>Text Utils- {{place}}</title>
   <!-- Favicon-->
   <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
 
@@ -32,9 +32,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/">Home</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/css-minifier">CSS Minifier</a>
-        </li>
         <li class="nav-item active">
           <a class="nav-link" href="/about">About Us</a>
         </li>
@@ -49,8 +46,16 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </nav>
-  <div class="container">
-    <h1> THIS PAGE IS STILL IN DEVELOPEMENT STAGE </h1>
+
+  <div class="container mt-4">
+    <h2 class="text-center">TEXT-UTILS</h2>
+    <img class="aboutimg" src="{% static '/img/about.png' %}" alt="About TextUtils">
+    <div class="aboutus mb-4">
+      <p class="aboutus text-center">Text Utils is a Django based text utility app which can remove newlines, punctuations, numbers
+        and extra spaces. It can also transforms the given text into uppercase. It is completely free to use and you can too contribute to its codebase.
+      </p>
+    </div>
+
   </div>
 
 
