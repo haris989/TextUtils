@@ -1,0 +1,38 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: block;
+    padding: 10px 0;
+  }
+
+  #corner-btn {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    padding:2px 4px;
+  }
+
+  .analyzed_text{
+      font-size: 1.1rem;
+      font-family: 'Roboto', sans-serif;
+      white-space: pre-wrap;
+  }
+
+  .aboutus{
+    font-size: 1.1rem;
+  }
+
+  .analyzed_text:hover, .analyzed_css:hover{
+    color: red;
+}
+
+img.aboutimg{
+  width: 50vw;
+  margin:auto auto;
+  display: block;
+}

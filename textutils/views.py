@@ -4,7 +4,8 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'index.html')
+    params = {'place': 'Home'}
+    return render(request, 'index.html', params)
 
 
 def analyze(request):
@@ -26,7 +27,7 @@ def analyze(request):
             if char not in punctuations:
                 analyzed = analyzed + char
 
-        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
+        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed, 'place': 'Analyzed Result'}
         djtext = analyzed
 
     if(fullcaps=="on"):
@@ -34,7 +35,7 @@ def analyze(request):
         for char in djtext:
             analyzed = analyzed + char.upper()
 
-        params = {'purpose': 'Changed to Uppercase', 'analyzed_text': analyzed}
+        params = {'purpose': 'Changed to Uppercase', 'analyzed_text': analyzed, 'place': 'Analyzed Result'}
         djtext = analyzed
 
     if(extraspaceremover=="on"):
@@ -48,7 +49,7 @@ def analyze(request):
             elif not(djtext[index] == " " and djtext[index+1]==" "):                        
                 analyzed = analyzed + char
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed, 'place': 'Analyzed Result'}
         djtext = analyzed
 
     if (newlineremover == "on"):
@@ -57,7 +58,7 @@ def analyze(request):
             if char != "\n" and char!="\r":
                 analyzed = analyzed + char
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed, 'place': 'Analyzed Result'}
     
     if (numberremover == "on"):
         analyzed = ""
@@ -67,14 +68,26 @@ def analyze(request):
             if char not in numbers:
                 analyzed = analyzed + char
         
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed, 'place': 'Analyzed Result'}
         djtext = analyzed
 
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
-        return HttpResponse("please select any operation and try again")
+        return render(request, 'error.html')
 
     return render(request, 'analyze.html', params)
 
 def about(request):
-    return render(request, 'about.html')
+    params={'place': 'About Us'}
+    return render(request, 'about.html', params)
+
+def contact(request):
+    params={'place': 'Contact Us'}
+    return render(request, 'contact.html', params)
+
+def thanks(request):
+    name = request.POST.get('name1', 'User')
+    name = name.capitalize()
+
+    params = {'name': name, 'place': 'Thank You'}    
+    return render(request, 'thanks.html', params)
