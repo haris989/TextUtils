@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 
@@ -10,33 +11,22 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
+  <!-- Custom CSS form static -->
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <!-- Custom font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
   <title>Text Utils-Results </title>
   <!-- Favicon-->
-  <link rel="shortcut icon" href="https://codewithharry.com/static/photo.png">
-  <style>
-    .footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: black;
-      color: white;
-      text-align: center;
-      display: block;
-    }
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}" />
 
-    #corner-btn {
-      position: absolute;
-      right: 15px;
-      top: 15px;
-      padding: 4px;
-    }
-  </style>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">TextUtils.in</a>
+    <a class="navbar-brand" href="/">TextUtils.in</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -44,13 +34,16 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/css-minifier">CSS Minifier</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/about">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
+          <a class="nav-link" href="/contact">Contact Us</a>
         </li>
 
       </ul>
@@ -72,14 +65,14 @@
 
   <div class="container">
 
-    <h1>Your Analyzed Text - {{ purpose }}</h1>
+    <h2>Your Analyzed Text - {{ purpose }}</h2>
 
     <div style="position:relative;" class="bg-light">
       <p>
-        <button id="corner-btn" class="btn btn-outline-primary btn-sm" onclick=copy()>
+        <button id="corner-btn" class="btn btn-outline-primary btn-sm" onclick="copy()">
           Copy
         </button>
-      <pre id="copy-text" class="p-4"><h2>{{ analyzed_text }}</h2></pre>
+      <pre id="copy-text" class="p-4"><p class="analyzed_text">{{ analyzed_text }}</p></pre>
       </p>
     </div>
   </div>
