@@ -1,7 +1,7 @@
 # I have created this file - Harry
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import redirect, render
+from django.contrib import messages
 
 def index(request):
     return render(request, 'index.html')
@@ -72,7 +72,8 @@ def analyze(request):
 
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
-        return HttpResponse("please select any operation and try again")
+        messages.warning(request, "Please Select any Operation and Try Again")
+        return redirect('/')
 
     return render(request, 'analyze.html', params)
 
