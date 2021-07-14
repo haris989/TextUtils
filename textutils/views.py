@@ -7,72 +7,63 @@ def index(request):
     return render(request, 'index.html')
 
 
-def analyze(request):
-    #Get the text
-    djtext = request.POST.get('text', 'default')
+ef analyze(request):
+    # Get the text
+    djtext = request.POST.get('text', 'Nothing Enterrred')
+    djtext_list = list(djtext)
+    del djtext
 
     # Check checkbox values
     removepunc = request.POST.get('removepunc', 'off')
     fullcaps = request.POST.get('fullcaps', 'off')
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
-    numberremover = request.POST.get('numberremover','off')
 
-    #Check which checkbox is on
-    if removepunc == "on":
-        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
-        analyzed = ""
-        for char in djtext:
-            if char not in punctuations:
-                analyzed = analyzed + char
+    # creating needs
+    params = {'purpose': '', 'analyzed_text': ""}
+    punctuations = list('''!()-[]{};:'"\,<>./?@#$%^&*_~''')
+    removal_list = []
 
-        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
-        djtext = analyzed
+    # main for loop
+    for index in range(len(djtext_list)):
+        char = djtext_list[index]
+        removal = False
 
-    if(fullcaps=="on"):
-        analyzed = ""
-        for char in djtext:
-            analyzed = analyzed + char.upper()
+        if removepunc == "on":
+            if djtext_list[index] in punctuations:
+                removal = True
+            if index == 0:
+                params['purpose'] = params['purpose'] + \
+                    ", Removed Punctuations"
 
-        params = {'purpose': 'Changed to Uppercase', 'analyzed_text': analyzed}
-        djtext = analyzed
+        if fullcaps == "on":
 
-    if(extraspaceremover=="on"):
-        analyzed = ""
-        for index, char in enumerate(djtext):
-            # It is for if a extraspace is in the last of the string
-            if char == djtext[-1]:
-                    if not(djtext[index] == " "):
-                        analyzed = analyzed + char
+            djtext_list[index] = djtext_list[index].upper()
+            if index == 0:
+                params['purpose'] = params['purpose'] + ", Capitalised Text"
 
-            elif not(djtext[index] == " " and djtext[index+1]==" "):                        
-                analyzed = analyzed + char
+        if(extraspaceremover == "on"):
+            if index + 2 < len(djtext_list):
+                if (djtext_list[index] == " " and djtext_list[index+1] == " "):
+                    removal = True
+                if index == 0:
+                    params['purpose'] = params['purpose'] + \
+                        ", Unneeded spaces removed"
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
-        djtext = analyzed
+        if (newlineremover == "on"):
 
-    if (newlineremover == "on"):
-        analyzed = ""
-        for char in djtext:
-            if char != "\n" and char!="\r":
-                analyzed = analyzed + char
+            if djtext_list[index] == "\n" and djtext_list[index + 1] == "\n":
+                removal = True
+            if index == 0:
+                params['purpose'] = params['purpose'] + ", New lines removed"
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
-    
-    if (numberremover == "on"):
-        analyzed = ""
-        numbers = '0123456789'
+        if removal:
+            removal_list.append(char)
 
-        for char in djtext:
-            if char not in numbers:
-                analyzed = analyzed + char
-        
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
-        djtext = analyzed
+    djtext_list = [e for e in djtext_list if e not in removal_list]
 
-    
-    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
-        return HttpResponse("please select any operation and try again")
+    params['analyzed_text'] = "".join(djtext_list)
+    params['purpose'] = params['purpose'].lstrip(",")
 
     return render(request, 'analyze.html', params)
 
