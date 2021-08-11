@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,77 +13,75 @@
     <!-- Favicon-->
     <link rel="shortcut icon" href="https://codewithharry.com/static/photo.png">
     <style>
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: black;
-   color: white;
-   text-align: center;
-   display: block;
-}
-#corner-btn{
-  position: absolute;
-  right: 0;
-  top: 15px;
-  padding: 4px;
-}
-</style>
-  </head>
-  <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">TextUtils.in</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: white;
+            text-align: center;
+            display: block;
+        }
+        
+        #corner-btn {
+            position: absolute;
+            right: 0;
+            top: 15px;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">TextUtils.in</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/about">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact Us</a>
-      </li>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
 
-    </ul>
-  </div>
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</nav>
+            </ul>
+        </div>
+    </nav>
 
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> Your text has been analyzed!
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> Your text has been analyzed!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-</div>
+    </div>
 
 
-<div class="container">
+    <div class="container">
 
-<h1>Your Analyzed Text - {{ purpose }}</h1>
+        <h1>Your Analyzed Text - {{ purpose }}</h1>
 
-<div style="position:relative;" class="bg-light">
-<p>
-    <button id="corner-btn" class="btn btn-outline-primary" onclick="copy()">
+        <div style="position:relative;" class="bg-light">
+            <p>
+                <button id="corner-btn" class="btn btn-outline-primary" onclick="copy()">
         Copy
     </button>
-  <pre id="copy-text" class="p-4"><h2>{{ analyzed_text }}</h2></pre>
-</p>
-</div>
-</div>
-<footer class="footer">
-  <div class="container">
-    <span class="text-light">&#169 2019 Textutils.in </span>
-  </div>
-</footer>
+                <pre id="copy-text" class="p-4"><h2>{{ analyzed_text }}</h2></pre>
+            </p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-light">&#169 2019 Textutils.in </span>
+        </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -91,24 +90,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
     <script>
-      function copy() {
-        // copied from https://stackoverflow.com/questions/36639681/how-to-copy-text-from-a-div-to-clipboard
-        if (document.selection) {
-    var range = document.body.createTextRange();
-    range.moveToElementText(document.getElementById("copy-text"));
-    range.select().createTextRange();
-    document.execCommand("copy");
+        function copy() {
+            // copied from https://stackoverflow.com/questions/36639681/how-to-copy-text-from-a-div-to-clipboard
+            if (document.selection) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(document.getElementById("copy-text"));
+                range.select().createTextRange();
+                document.execCommand("copy");
 
-  } else if (window.getSelection) {
-    var range = document.createRange();
-    range.selectNode(document.getElementById("copy-text"));
-    window.getSelection().addRange(range);
-    document.execCommand("copy");
-    alert('Text Copied')
+            } else if (window.getSelection) {
+                var range = document.createRange();
+                range.selectNode(document.getElementById("copy-text"));
+                window.getSelection().addRange(range);
+                document.execCommand("copy");
+                alert('Text Copied')
 
-  }
+            }
 
-      }
+        }
     </script>
-  </body>
+</body>
+
 </html>
