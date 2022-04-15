@@ -67,9 +67,21 @@
 
 <div class="container">
 
-<h1>Your Analyzed Text - {{ purpose }}</h1>
+<h1>Your Analyzed Text</h1>
+<h4>Applied Changes : Applied Changes is in <font style='color:green'>GREEN </font> color</h4>
+<h6 style="--sts:{{rempunc_sts}}; color:var(--sts)">1. Remove Punctuations </h6>
+<h6 style="--sts:{{fullcaps_sts}}; color:var(--sts)">2. All Capitalised </h6>
+<h6 style="--sts:{{remnew_sts}}; color:var(--sts)">3. Remove New Line </h6>
+<h6 style="--sts:{{remspace_sts}}; color:var(--sts)">4. Remove Extra Spaces </h6>
+<h6 style="--sts:{{remnum_sts}}; color:var(--sts)">5. Remove Numbers </h6>
 
-<div style="position:relative;" class="bg-light">
+
+<!-- UNDER DEVELOPMENT SECTION -->
+<div class="container">
+  Remove Punctuations 
+</div>
+
+<div style="position:relative" class="bg-light">
 <p>
     <button id="corner-btn" class="btn btn-outline-primary" onclick="copy()">
         Copy
