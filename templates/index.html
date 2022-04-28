@@ -24,6 +24,17 @@
    		text-align: center;
    		display: block;
 		}
+	    .jigsaw {
+		    margin-top: 30px;
+
+            border-radius: 10%;
+
+            background-color:  white;
+
+            margin-left: 70px;
+
+            margin-right: 70px;
+		    }
 	</style>
   </head>
   <body>
@@ -48,10 +59,48 @@
   </div>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button" data-toggle="modal" data-target="#exampleModalLong">Search</button>
+
+
   </form>
 </nav>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" style="border-radus: 10px;">
 
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h2 class="modal-title" id="exampleModalLongTitle">Alert!</h2>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                            <span aria-hidden="true">&times;</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                    Please enter a relevant Search query.
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-secondary" data-target="#exampleModalLong">Retry</button>
+
+                        <button type="button" class="btn btn-success" data-toggle='modal' data-target="#exampleModalLong">Understood</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Welcome to TextUtils!</strong> You can do anything with your text here!
@@ -60,7 +109,7 @@
   </button>
 </div>
 
-
+<div class='jigsaw'>
 <div class="container">
 
   <form action='/analyze' onsubmit="return validate()" method='post'> {% csrf_token %}
@@ -114,7 +163,26 @@
 
 <button type="submit" class="btn btn-dark mt-2">Analyze Text</button>
     </form>
+	
+ </div>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
 </div>
+	
+	
  <!-- Typed.js DONT TOUCH THIS! --> 
  <div id="typed-strings">
   </div>
