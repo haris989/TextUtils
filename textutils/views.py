@@ -2,6 +2,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+def color(a):
+    if a=="on":
+        return "green"
+    else:
+        return "red"
 
 def index(request):
     return render(request, 'index.html')
@@ -26,7 +31,6 @@ def analyze(request):
             if char not in punctuations:
                 analyzed = analyzed + char
 
-        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
         djtext = analyzed
 
     if(fullcaps=="on"):
@@ -34,7 +38,6 @@ def analyze(request):
         for char in djtext:
             analyzed = analyzed + char.upper()
 
-        params = {'purpose': 'Changed to Uppercase', 'analyzed_text': analyzed}
         djtext = analyzed
 
     if(extraspaceremover=="on"):
@@ -48,7 +51,6 @@ def analyze(request):
             elif not(djtext[index] == " " and djtext[index+1]==" "):                        
                 analyzed = analyzed + char
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
 
     if (newlineremover == "on"):
@@ -57,8 +59,7 @@ def analyze(request):
             if char != "\n" and char!="\r":
                 analyzed = analyzed + char
 
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
-    
+        
     if (numberremover == "on"):
         analyzed = ""
         numbers = '0123456789'
@@ -67,13 +68,21 @@ def analyze(request):
             if char not in numbers:
                 analyzed = analyzed + char
         
-        params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
 
     
     if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
         return HttpResponse("please select any operation and try again")
 
+    params = {
+        'analyzed_text': analyzed,
+        'rempunc_sts' : color(removepunc),
+        'fullcaps_sts' : color(fullcaps),
+        'remnew_sts' : color(newlineremover),
+        'remspace_sts' : color(extraspaceremover),
+        'remnum_sts' : color(numberremover),
+        }
+    
     return render(request, 'analyze.html', params)
 
 def about(request):
