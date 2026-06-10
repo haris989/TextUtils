@@ -17,6 +17,7 @@ def analyze(request):
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
     numberremover = request.POST.get('numberremover','off')
+    wordcounter = request.POST.get('wordcounter','off')
 
     #Check which checkbox is on
     if removepunc == "on":
@@ -69,9 +70,16 @@ def analyze(request):
         
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
         djtext = analyzed
+    if (wordcounter == "on"):
+        words = len(djtext.split())
+
+        params = {
+            'purpose': 'Word Count', 'analyzed_text': f'Total words: {words}'
+        }
+        djtext = str(words) 
 
     
-    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on"):
+    if(removepunc != "on" and newlineremover!="on" and extraspaceremover!="on" and fullcaps!="on" and numberremover != "on" and wordcounter != "on"):
         return HttpResponse("please select any operation and try again")
 
     return render(request, 'analyze.html', params)
