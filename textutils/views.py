@@ -58,6 +58,8 @@ def analyze(request):
                 analyzed = analyzed + char
 
         params = {'purpose': 'Removed NewLines', 'analyzed_text': analyzed}
+        djtext = analyzed
+        
     
     if (numberremover == "on"):
         analyzed = ""
